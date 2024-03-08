@@ -1,6 +1,6 @@
 from flask import Flask
 from flask import render_template
-import json
+from flask import jsonify
 
 app = Flask(__name__)
 
@@ -14,21 +14,25 @@ def hello():
 
 @app.get('/salesdata')
 def salesdata():
-    respons ={ 
+    salestotals =[200000.0,201000.0,102333.0]
+    respons ={ 'sales1':
               {
               'id':1,
               'name':'AlTahlia Branch',
               'total':200000.0
               },
+              'sales2':
               {
               'id':2,
               'name':'AlMohammadia Branch',
               'total':201000.0
               },
+              'sales3':
               {
               'id':3,
               'name':'Safa Branch',
               'total':102333.0
               }
               }
-    return json.dump(respons)
+    # return respons
+    return jsonify(salestotals)
